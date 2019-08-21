@@ -1,6 +1,6 @@
 package az.contasoft.xmies_randevu.api.crudServices.internal;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class SaveRandevu {
 
@@ -9,11 +9,11 @@ public class SaveRandevu {
     private String soyAdi;
     private String ataAdi;
     private String telNomresi;
-    private Date date;
+    private LocalDateTime date;
     private long idPersonal;
     private int status;
 
-    public SaveRandevu( String adi, String soyAdi,String ataAdi, String telNomresi, Date date, long idPersonal, int status) {
+    public SaveRandevu( String adi, String soyAdi,String ataAdi, String telNomresi, LocalDateTime date, long idPersonal, int status) {
         this.adi = adi;
         this.soyAdi = soyAdi;
         this.ataAdi = ataAdi;
@@ -64,7 +64,7 @@ public class SaveRandevu {
         this.telNomresi = telNomresi;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
@@ -76,7 +76,7 @@ public class SaveRandevu {
         this.ataAdi = ataAdi;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

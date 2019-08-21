@@ -2,7 +2,7 @@ package az.contasoft.xmies_randevu.db.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 
@@ -20,11 +20,11 @@ import java.util.Date;
     private String soyAdi;
     private String ataAdi;
     private String telNomresi;
-    private Date date;
+    private LocalDateTime date;
     private long idPersonal;
     private int status;
 
-    public Randevu(String adi, String soyAdi, String ataAdi, String telNomresi, Date date, long idPersonal, int status) {
+    public Randevu(String adi, String soyAdi, String ataAdi, String telNomresi, LocalDateTime date, long idPersonal, int status) {
         this.adi = adi;
         this.soyAdi = soyAdi;
         this.ataAdi = ataAdi;
@@ -91,11 +91,11 @@ import java.util.Date;
         this.telNomresi = telNomresi;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
