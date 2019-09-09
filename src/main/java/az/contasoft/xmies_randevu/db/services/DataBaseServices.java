@@ -34,6 +34,11 @@ public class DataBaseServices {
             randevuFromDB.setDate(randevu.getDate());
             randevuFromDB.setIdPersonal(randevu.getIdPersonal());
             randevuFromDB.setStatus(randevu.getStatus());
+            randevuFromDB.setIdNote(randevu.getIdNote());
+            randevuFromDB.setIdPatient(randevu.getIdPatient());
+            randevuFromDB.setIdXidmetler(randevu.getIdXidmetler());
+            randevuFromDB.setIdYonlendiren(randevu.getIdYonlendiren());
+            randevuFromDB.setIdSigortaMuqavile(randevu.getIdSigortaMuqavile());
         }else {
             logger.info("{}", "Trying to inser randevu");
             randevuFromDB = randevu;

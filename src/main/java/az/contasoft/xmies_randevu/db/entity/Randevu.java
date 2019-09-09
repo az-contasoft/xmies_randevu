@@ -21,16 +21,26 @@ import java.time.LocalDateTime;
     private String ataAdi;
     private String telNomresi;
     private LocalDateTime date;
+    private long idNote;
+    private long idSigortaMuqavile;
+    private long idYonlendiren;
     private long idPersonal;
+    private long idPatient;
+    private long idXidmetler;
     private int status;
 
-    public Randevu(String adi, String soyAdi, String ataAdi, String telNomresi, LocalDateTime date, long idPersonal, int status) {
+    public Randevu(String adi, String soyAdi, String ataAdi, String telNomresi, LocalDateTime date, long idNote, long idSigortaMuqavile, long idYonlendiren, long idPersonal, long idPatient, long idXidmetler, int status) {
         this.adi = adi;
         this.soyAdi = soyAdi;
         this.ataAdi = ataAdi;
         this.telNomresi = telNomresi;
         this.date = date;
+        this.idNote = idNote;
+        this.idSigortaMuqavile = idSigortaMuqavile;
+        this.idYonlendiren = idYonlendiren;
         this.idPersonal = idPersonal;
+        this.idPatient = idPatient;
+        this.idXidmetler = idXidmetler;
         this.status = status;
     }
 
@@ -46,9 +56,54 @@ import java.time.LocalDateTime;
                 ", ataAdi='" + ataAdi + '\'' +
                 ", telNomresi='" + telNomresi + '\'' +
                 ", date=" + date +
+                ", idNote=" + idNote +
+                ", idSigortaMuqavile=" + idSigortaMuqavile +
+                ", idYonlendiren=" + idYonlendiren +
                 ", idPersonal=" + idPersonal +
+                ", idPatient=" + idPatient +
+                ", idXidmetler=" + idXidmetler +
                 ", status=" + status +
                 '}';
+    }
+
+    public long getIdNote() {
+        return idNote;
+    }
+
+    public void setIdNote(long idNote) {
+        this.idNote = idNote;
+    }
+
+    public long getIdSigortaMuqavile() {
+        return idSigortaMuqavile;
+    }
+
+    public long getIdPatient() {
+        return idPatient;
+    }
+
+    public void setIdPatient(long idPatient) {
+        this.idPatient = idPatient;
+    }
+
+    public long getIdXidmetler() {
+        return idXidmetler;
+    }
+
+    public void setIdXidmetler(long idXidmetler) {
+        this.idXidmetler = idXidmetler;
+    }
+
+    public void setIdSigortaMuqavile(long idSigortaMuqavile) {
+        this.idSigortaMuqavile = idSigortaMuqavile;
+    }
+
+    public long getIdYonlendiren() {
+        return idYonlendiren;
+    }
+
+    public void setIdYonlendiren(long idYonlendiren) {
+        this.idYonlendiren = idYonlendiren;
     }
 
     public long getIdRandevu() {

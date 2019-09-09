@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/searchServices")
 public class SearchController {
@@ -30,7 +32,7 @@ public class SearchController {
 
 
     @GetMapping("/getAll")
-    public ResponseEntity<IMap<Long, Randevu>> getAll() {
+    public ResponseEntity<Map<Long, Randevu>> getAll() {
         logger.info("getAllRandevu ");
         return searchServices.getAll();
     }

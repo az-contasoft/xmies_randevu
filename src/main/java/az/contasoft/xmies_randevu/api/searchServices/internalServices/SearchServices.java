@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Component
 public class SearchServices {
 
@@ -37,7 +39,7 @@ public class SearchServices {
     }
 
 
-    public ResponseEntity<IMap<Long, Randevu>> getAll() {
+    public ResponseEntity<Map<Long, Randevu>> getAll() {
 
         try {
             IMap<Long, Randevu> randevuIMap = hazelCastUtility.getMapOfRandevu();

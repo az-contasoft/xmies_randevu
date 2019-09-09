@@ -3,6 +3,8 @@ package az.contasoft.xmies_randevu.api.crudServices.internalServices;
 import az.contasoft.xmies_randevu.api.crudServices.internal.SaveRandevu;
 import az.contasoft.xmies_randevu.api.crudServices.internal.UpdateRandevu;
 import az.contasoft.xmies_randevu.db.entity.Randevu;
+import az.contasoft.xmies_randevu.proxy.NoteProxy;
+import az.contasoft.xmies_randevu.proxy.entity.Note;
 import az.contasoft.xmies_randevu.util.HazelCastUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,18 +14,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CrudServices {
+    private final NoteProxy noteProxy;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final HazelCastUtility hazelCastUtility;
 
-    public CrudServices(HazelCastUtility hazelCastUtility) {
+    public CrudServices(NoteProxy noteProxy, HazelCastUtility hazelCastUtility) {
+        this.noteProxy = noteProxy;
         this.hazelCastUtility = hazelCastUtility;
     }
 
-    public ResponseEntity<Randevu> saveRandevu(SaveRandevu saveRandevu){
+    public ResponseEntity<Randevu> saveRandevu(SaveRandevu saveRandevu) {
         try {
-            Randevu randevu= new Randevu();
+            Randevu randevu = new Randevu();
             logger.info("saveRandevu response : {}", saveRandevu.toString());
             randevu.setAdi(saveRandevu.getAdi());
             randevu.setSoyAdi(saveRandevu.getSoyAdi());
@@ -32,13 +36,38 @@ public class CrudServices {
             randevu.setDate(saveRandevu.getDate());
             randevu.setIdPersonal(saveRandevu.getIdPersonal());
             randevu.setStatus(saveRandevu.getStatus());
-            randevu = hazelCastUtility.saveOrUpdateRandevu(randevu);
-            return new ResponseEntity<>(randevu, HttpStatus.OK);
-        }catch (Exception e){
-            logger.error("Error save file text : {}",e,e);
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            randevu.setIdYonlendiren(saveRandevu.getIdYonlendiren());
+            randevu.setIdSigortaMuqavile(saveRandevu.getIdSigortaMuqavile());
+            randevu.setIdXidmetler(saveRandevu.getIdXidmetler());
+            randevu.setIdPatient(saveRandevu.getIdPatient());
+            try {
+                if (saveRandevu.getNote() != null && !saveRandevu.getNote().trim().isEmpty()) {
+                    Note note = new Note();
+                    note.setEnteredDate(randevu.getDate());
+                    note.setText(saveRandevu.getNote());
+                    ResponseEntity<Note> responseEntity = noteProxy.saveNote(note);
+                    note = responseEntity.getBody();
+
+                    if (note != null) {
+                        logger.info("note successfully saved - idNote : {} , text {}", note.getIdNote(), note.getText());
+                        randevu.setIdNote(note.getIdNote());
+                    }
+                } else {
+                    logger.info("getNote was null. note not saved");
+            }
+
+        } catch (Exception e) {
+            logger.error("error saving note e: {}, e: {}", e, e);
         }
-    }
+                randevu = hazelCastUtility.saveOrUpdateRandevu(randevu);
+                return new ResponseEntity<>(randevu, HttpStatus.OK);
+            } catch (Exception e) {
+                logger.error("Error save file text : {}", e, e);
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+
 
     public ResponseEntity<Randevu> updateRandevu(UpdateRandevu updateRandevu){
         try {
@@ -50,8 +79,13 @@ public class CrudServices {
             randevu.setAtaAdi(updateRandevu.getAtaAdi());
             randevu.setTelNomresi(updateRandevu.getTelNomresi());
             randevu.setDate(updateRandevu.getDate());
+            randevu.setIdSigortaMuqavile(updateRandevu.getIdSigortaMuqavile());
+            randevu.setIdYonlendiren(updateRandevu.getIdYonlendiren());
+            randevu.setIdNote(updateRandevu.getIdNote());
             randevu.setIdPersonal(updateRandevu.getIdPersonal());
             randevu.setStatus(updateRandevu.getStatus());
+            randevu.setIdPatient(updateRandevu.getIdPatient());
+            randevu.setIdXidmetler(updateRandevu.getIdXidmetler());
             randevu = hazelCastUtility.saveOrUpdateRandevu(randevu);
             return new ResponseEntity<>(randevu, HttpStatus.OK);
         }catch (Exception e){
