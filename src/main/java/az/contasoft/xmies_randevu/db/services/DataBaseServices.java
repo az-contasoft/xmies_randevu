@@ -22,30 +22,30 @@ public class DataBaseServices {
 
     public Randevu insertOrUpdate (Randevu randevu) throws Exception{
         logger.info("{}", "Randevu insert or update for getIdRandevu : "+randevu.getIdRandevu());
-        Randevu randevuFromDB;
-        if (randevu.getIdRandevu()>0){
-            logger.info("{}", "Randevu found and trying to update");
-            randevuFromDB = repoRandevu.findByIdRandevu(randevu.getIdRandevu());
-            randevuFromDB.setIdRandevu(randevu.getIdRandevu());
-            randevuFromDB.setAdi(randevu.getAdi());
-            randevuFromDB.setSoyAdi(randevu.getSoyAdi());
-            randevuFromDB.setAtaAdi(randevu.getAtaAdi());
-            randevuFromDB.setTelNomresi(randevu.getTelNomresi());
-            randevuFromDB.setDate(randevu.getDate());
-            randevuFromDB.setIdPersonal(randevu.getIdPersonal());
-            randevuFromDB.setStatus(randevu.getStatus());
-            randevuFromDB.setIdNote(randevu.getIdNote());
-            randevuFromDB.setIdPatient(randevu.getIdPatient());
-            randevuFromDB.setIdXidmetler(randevu.getIdXidmetler());
-            randevuFromDB.setIdYonlendiren(randevu.getIdYonlendiren());
-            randevuFromDB.setIdSigortaMuqavile(randevu.getIdSigortaMuqavile());
-        }else {
-            logger.info("{}", "Trying to inser randevu");
-            randevuFromDB = randevu;
-        }
-        randevuFromDB = repoRandevu.save(randevuFromDB);
+//        Randevu randevuFromDB;
+//        if (randevu.getIdRandevu()>0){
+//            logger.info("{}", "Randevu found and trying to update");
+//            randevuFromDB = repoRandevu.findByIdRandevu(randevu.getIdRandevu());
+//            randevuFromDB.setIdRandevu(randevu.getIdRandevu());
+//            randevuFromDB.setAdi(randevu.getAdi());
+//            randevuFromDB.setSoyAdi(randevu.getSoyAdi());
+//            randevuFromDB.setAtaAdi(randevu.getAtaAdi());
+//            randevuFromDB.setTelNomresi(randevu.getTelNomresi());
+//            randevuFromDB.setDate(randevu.getDate());
+//            randevuFromDB.setIdPersonal(randevu.getIdPersonal());
+//            randevuFromDB.setStatus(randevu.getStatus());
+//            randevuFromDB.setNote(randevu.getNote());
+//            randevuFromDB.setIdPatient(randevu.getIdPatient());
+//            randevuFromDB.setIdXidmetler(randevu.getIdXidmetler());
+//            randevuFromDB.setIdYonlendiren(randevu.getIdYonlendiren());
+//            randevuFromDB.setIdSigortaMuqavile(randevu.getIdSigortaMuqavile());
+//        }else {
+//            logger.info("{}", "Trying to inser randevu");
+//            randevuFromDB = randevu;
+//        }
+        randevu = repoRandevu.save(randevu);
         logger.info("successfully saved");
-        return randevuFromDB;
+        return randevu;
     }
 
     public Randevu getRandevu(long idRandevu) {

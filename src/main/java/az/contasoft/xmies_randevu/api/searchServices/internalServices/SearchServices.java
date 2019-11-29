@@ -1,14 +1,19 @@
 package az.contasoft.xmies_randevu.api.searchServices.internalServices;
 
+import az.contasoft.xmies_randevu.api.searchServices.internal.RequestText;
 import az.contasoft.xmies_randevu.db.entity.Randevu;
 import az.contasoft.xmies_randevu.util.HazelCastUtility;
 import com.hazelcast.core.IMap;
+import net.bytebuddy.matcher.InheritedAnnotationMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -55,6 +60,22 @@ public class SearchServices {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    public ResponseEntity<List<Randevu>> getRandevuByName(RequestText requestText){
+//        Map<Long, Randevu> map = hazelCastUtility.getMapOfRandevu();
+//        String[] enteredTextMas = requestText.getEnteredText().split(" ");
+//
+//        for (String enteredTextmas : enteredTextMas) {
+//            Map<Long, Randevu> yeniMap = new HashMap<>();
+//            for (Randevu randevu : map.values()) {
+//
+//            }
+//        }
+//
+//
+//    }
+
+
 
     public ResponseEntity<String> startCaching() {
         hazelCastUtility.startCaching();

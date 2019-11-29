@@ -23,13 +23,13 @@ public class HazelCastUtility {
     public Randevu saveOrUpdateRandevu(Randevu randevu) throws Exception {
         logger.info("{}", "Trying to add or update Randevu to hazelcast.. " + randevu.toString());
         randevu = dataBaseServices.insertOrUpdate(randevu);
-        mapOfRandevu.put(randevu.getIdRandevu(),randevu);
-        logger.info("{}","mapOfRandevu ELAVE OLUNDU" + mapOfRandevu);
+        mapOfRandevu.put(randevu.getIdRandevu(), randevu);
+        logger.info("{}", "mapOfRandevu ELAVE OLUNDU" + mapOfRandevu);
         return randevu;
     }
 
 
-    public Randevu getRandevuByIdRandevu(long idRandevu) throws Exception{
+    public Randevu getRandevuByIdRandevu(long idRandevu) throws Exception {
         logger.info("{}", "Trying to get Randevu from hazelcast idRandevu : " + idRandevu);
         Randevu randevu = mapOfRandevu.get(idRandevu);
         if (randevu == null) {

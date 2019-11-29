@@ -21,21 +21,21 @@ import java.time.LocalDateTime;
     private String ataAdi;
     private String telNomresi;
     private LocalDateTime date;
-    private long idNote;
+    private String note;
     private long idSigortaMuqavile;
     private long idYonlendiren;
     private long idPersonal;
     private long idPatient;
     private long idXidmetler;
-    private int status;
+    private long status;
 
-    public Randevu(String adi, String soyAdi, String ataAdi, String telNomresi, LocalDateTime date, long idNote, long idSigortaMuqavile, long idYonlendiren, long idPersonal, long idPatient, long idXidmetler, int status) {
+    public Randevu(String adi, String soyAdi, String ataAdi, String telNomresi, LocalDateTime date, String note, long idSigortaMuqavile, long idYonlendiren, long idPersonal, long idPatient, long idXidmetler, long status) {
         this.adi = adi;
         this.soyAdi = soyAdi;
         this.ataAdi = ataAdi;
         this.telNomresi = telNomresi;
         this.date = date;
-        this.idNote = idNote;
+        this.note = note;
         this.idSigortaMuqavile = idSigortaMuqavile;
         this.idYonlendiren = idYonlendiren;
         this.idPersonal = idPersonal;
@@ -56,7 +56,7 @@ import java.time.LocalDateTime;
                 ", ataAdi='" + ataAdi + '\'' +
                 ", telNomresi='" + telNomresi + '\'' +
                 ", date=" + date +
-                ", idNote=" + idNote +
+                ", idNote=" + note +
                 ", idSigortaMuqavile=" + idSigortaMuqavile +
                 ", idYonlendiren=" + idYonlendiren +
                 ", idPersonal=" + idPersonal +
@@ -66,12 +66,12 @@ import java.time.LocalDateTime;
                 '}';
     }
 
-    public long getIdNote() {
-        return idNote;
+    public String getNote() {
+        return note;
     }
 
-    public void setIdNote(long idNote) {
-        this.idNote = idNote;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public long getIdSigortaMuqavile() {
@@ -162,11 +162,11 @@ import java.time.LocalDateTime;
         this.idPersonal = idPersonal;
     }
 
-    public int getStatus() {
+    public long getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(long status) {
         this.status = status;
     }
 }

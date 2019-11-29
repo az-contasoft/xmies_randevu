@@ -35,45 +35,26 @@ public class CrudServices {
             randevu.setTelNomresi(saveRandevu.getTelNomresi());
             randevu.setDate(saveRandevu.getDate());
             randevu.setIdPersonal(saveRandevu.getIdPersonal());
-            randevu.setStatus(saveRandevu.getStatus());
+            randevu.setStatus(50);
             randevu.setIdYonlendiren(saveRandevu.getIdYonlendiren());
             randevu.setIdSigortaMuqavile(saveRandevu.getIdSigortaMuqavile());
             randevu.setIdXidmetler(saveRandevu.getIdXidmetler());
             randevu.setIdPatient(saveRandevu.getIdPatient());
-            try {
-                if (saveRandevu.getNote() != null && !saveRandevu.getNote().trim().isEmpty()) {
-                    Note note = new Note();
-                    note.setEnteredDate(randevu.getDate());
-                    note.setText(saveRandevu.getNote());
-                    ResponseEntity<Note> responseEntity = noteProxy.saveNote(note);
-                    note = responseEntity.getBody();
-
-                    if (note != null) {
-                        logger.info("note successfully saved - idNote : {} , text {}", note.getIdNote(), note.getText());
-                        randevu.setIdNote(note.getIdNote());
-                    }
-                } else {
-                    logger.info("getNote was null. note not saved");
-            }
-
+            randevu.setNote(saveRandevu.getNote());
+            randevu = hazelCastUtility.saveOrUpdateRandevu(randevu);
+            return new ResponseEntity<>(randevu, HttpStatus.OK);
         } catch (Exception e) {
-            logger.error("error saving note e: {}, e: {}", e, e);
+            logger.error("Error save file text : {}", e, e);
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-                randevu = hazelCastUtility.saveOrUpdateRandevu(randevu);
-                return new ResponseEntity<>(randevu, HttpStatus.OK);
-            } catch (Exception e) {
-                logger.error("Error save file text : {}", e, e);
-                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
+    }
 
 
-
-    public ResponseEntity<Randevu> updateRandevu(UpdateRandevu updateRandevu){
+    public ResponseEntity<Randevu> updateRandevu(UpdateRandevu updateRandevu) {
         try {
-            Randevu randevu= hazelCastUtility.getRandevuByIdRandevu(updateRandevu.getIdRandevu());
+            Randevu randevu = hazelCastUtility.getRandevuByIdRandevu(updateRandevu.getIdRandevu());
             logger.info("saveRandevu response : {}", updateRandevu.toString());
-            randevu.setIdRandevu(randevu.getIdRandevu());
+            randevu.setIdRandevu(updateRandevu.getIdRandevu());
             randevu.setAdi(updateRandevu.getAdi());
             randevu.setSoyAdi(updateRandevu.getSoyAdi());
             randevu.setAtaAdi(updateRandevu.getAtaAdi());
@@ -81,15 +62,15 @@ public class CrudServices {
             randevu.setDate(updateRandevu.getDate());
             randevu.setIdSigortaMuqavile(updateRandevu.getIdSigortaMuqavile());
             randevu.setIdYonlendiren(updateRandevu.getIdYonlendiren());
-            randevu.setIdNote(updateRandevu.getIdNote());
+            randevu.setNote(updateRandevu.getNote());
             randevu.setIdPersonal(updateRandevu.getIdPersonal());
             randevu.setStatus(updateRandevu.getStatus());
             randevu.setIdPatient(updateRandevu.getIdPatient());
             randevu.setIdXidmetler(updateRandevu.getIdXidmetler());
             randevu = hazelCastUtility.saveOrUpdateRandevu(randevu);
             return new ResponseEntity<>(randevu, HttpStatus.OK);
-        }catch (Exception e){
-            logger.error("Error save file text : {}",e,e);
+        } catch (Exception e) {
+            logger.error("Error save file text : {}", e, e);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

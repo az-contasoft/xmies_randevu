@@ -9,22 +9,20 @@ public class SaveRandevu {
     private String ataAdi;
     private String telNomresi;
     private LocalDateTime date;
-    private long idNote;
+    private String note;
     private long idSigortaMuqavile;
     private long idYonlendiren;
     private long idPersonal;
     private long idPatient;
     private long idXidmetler;
-    private int status;
-    private String note;
+    private long status;
 
-    public SaveRandevu(String adi, String soyAdi, String ataAdi, String telNomresi, LocalDateTime date, long idNote, long idSigortaMuqavile, long idYonlendiren, long idPersonal, long idPatient, long idXidmetler, int status, String note) {
+    public SaveRandevu(String adi, String soyAdi, String ataAdi, String telNomresi, LocalDateTime date, long idSigortaMuqavile, long idYonlendiren, long idPersonal, long idPatient, long idXidmetler, long status, String note) {
         this.adi = adi;
         this.soyAdi = soyAdi;
         this.ataAdi = ataAdi;
         this.telNomresi = telNomresi;
         this.date = date;
-        this.idNote = idNote;
         this.idSigortaMuqavile = idSigortaMuqavile;
         this.idYonlendiren = idYonlendiren;
         this.idPersonal = idPersonal;
@@ -45,14 +43,13 @@ public class SaveRandevu {
                 ", ataAdi='" + ataAdi + '\'' +
                 ", telNomresi='" + telNomresi + '\'' +
                 ", date=" + date +
-                ", idNote=" + idNote +
+                ", note='" + note + '\'' +
                 ", idSigortaMuqavile=" + idSigortaMuqavile +
                 ", idYonlendiren=" + idYonlendiren +
                 ", idPersonal=" + idPersonal +
                 ", idPatient=" + idPatient +
                 ", idXidmetler=" + idXidmetler +
                 ", status=" + status +
-                ", note='" + note + '\'' +
                 '}';
     }
 
@@ -117,14 +114,6 @@ public class SaveRandevu {
         this.note = note;
     }
 
-    public long getIdNote() {
-        return idNote;
-    }
-
-    public void setIdNote(long idNote) {
-        this.idNote = idNote;
-    }
-
     public long getIdSigortaMuqavile() {
         return idSigortaMuqavile;
     }
@@ -153,11 +142,11 @@ public class SaveRandevu {
         this.idPersonal = idPersonal;
     }
 
-    public int getStatus() {
+    public long getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(long status) {
         this.status = status;
     }
 }

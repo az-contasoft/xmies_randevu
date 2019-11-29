@@ -20,7 +20,7 @@ public class CrudController {
 
     private final CrudServices crudServices;
 
-    public CrudController(CrudServices crudServices) {
+    public CrudController (CrudServices crudServices) {
         this.crudServices = crudServices;
     }
 

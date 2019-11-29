@@ -5,6 +5,7 @@ import az.contasoft.xmies_randevu.db.entity.Randevu;
 import com.hazelcast.core.IMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,8 @@ public class SearchController {
 
     @GetMapping("/cache")
     public ResponseEntity<String> startCaching() {
-        return searchServices.startCaching();
+        new Thread(() -> searchServices.startCaching()).start();
+        return new ResponseEntity<>("OK", HttpStatus.OK);
+
     }
 }
