@@ -10,6 +10,16 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class HazelcastConfiguration {
+
+
+    private final HazelcatMapConfigurations hazelcatMapConfigurations;
+
+    public HazelcastConfiguration(HazelcatMapConfigurations hazelcatMapConfigurations) {
+        this.hazelcatMapConfigurations = hazelcatMapConfigurations;
+    }
+
+
+
     @Bean
     public Config config() {
         return new Config();
@@ -22,6 +32,6 @@ public class HazelcastConfiguration {
 
     @Bean
     public IMap<Long, Randevu> mapOfRandevu (HazelcastInstance instance){
-        return instance.getMap("mapOfRandevu");
+        return instance.getMap(hazelcatMapConfigurations.getMapOfRandevu());
     }
 }
