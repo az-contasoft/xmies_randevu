@@ -2,7 +2,7 @@ package az.contasoft.xmies_randevu.util;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-
+@Deprecated
 @Configuration
 public class HazelcatMapConfigurations {
 

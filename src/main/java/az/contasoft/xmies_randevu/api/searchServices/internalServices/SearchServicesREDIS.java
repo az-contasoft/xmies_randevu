@@ -2,7 +2,6 @@ package az.contasoft.xmies_randevu.api.searchServices.internalServices;
 import az.contasoft.xmies_randevu.db.entity.Randevu;
 import az.contasoft.xmies_randevu.util.HazelCastUtility;
 import az.contasoft.xmies_randevu.util.RedisUtility;
-import com.hazelcast.core.IMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

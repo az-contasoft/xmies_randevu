@@ -26,15 +26,15 @@ public class CrudController {
     }
 
 
-    @PostMapping("/add")
-    public ResponseEntity<Randevu> saveRandevu(@RequestBody SaveRandevu saveRandevu){
-        logger.info("xmies_randevu->add->request : {}" +saveRandevu.toString());
-        return crudServicesREDIS.saveRandevu(saveRandevu);
-    }
-
-    @PostMapping("/update")
-    public ResponseEntity<Randevu> updateRandevu(@RequestBody UpdateRandevu updateRandevu){
-        logger.info("xmies_randevu->update->request : {}"+ updateRandevu.toString());
-        return  crudServicesREDIS.updateRandevu(updateRandevu);
-    }
+//    @PostMapping("/add")
+//    public ResponseEntity<Randevu> saveRandevu(@RequestBody SaveRandevu saveRandevu){
+//        logger.info("xmies_randevu->add->request : {}" +saveRandevu.toString());
+//        return crudServicesREDIS.saveRandevu(saveRandevu);
+//    }
+//
+//    @PostMapping("/update")
+//    public ResponseEntity<Randevu> updateRandevu(@RequestBody UpdateRandevu updateRandevu){
+//        logger.info("xmies_randevu->update->request : {}"+ updateRandevu.toString());
+//        return  crudServicesREDIS.updateRandevu(updateRandevu);
+//    }
 }
