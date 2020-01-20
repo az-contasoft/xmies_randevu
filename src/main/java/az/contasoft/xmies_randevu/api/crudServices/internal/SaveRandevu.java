@@ -3,6 +3,7 @@ package az.contasoft.xmies_randevu.api.crudServices.internal;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+@Deprecated
 @Data
 public class SaveRandevu {
 

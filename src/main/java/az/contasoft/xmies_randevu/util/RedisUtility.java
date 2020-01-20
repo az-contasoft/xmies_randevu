@@ -2,13 +2,10 @@ package az.contasoft.xmies_randevu.util;
 
 import az.contasoft.xmies_randevu.db.entity.Randevu;
 import az.contasoft.xmies_randevu.db.services.DataBaseServices;
-//import com.hazelcast.client.impl.protocol.codec.ReplicatedMapAddNearCacheEntryListenerCodec;
-//import com.hazelcast.core.IMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.MalformedParameterizedTypeException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;

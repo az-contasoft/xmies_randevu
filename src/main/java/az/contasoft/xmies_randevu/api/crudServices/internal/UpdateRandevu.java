@@ -1,7 +1,7 @@
 package az.contasoft.xmies_randevu.api.crudServices.internal;
 
 import java.time.LocalDateTime;
-
+@Deprecated
 public class UpdateRandevu {
 
     private long idRandevu;
