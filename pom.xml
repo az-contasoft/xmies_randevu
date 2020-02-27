@@ -10,7 +10,7 @@
     </parent>
     <groupId>az.contasoft</groupId>
     <artifactId>xmies_randevu</artifactId>
-    <version>0.0.2-TOVUZ</version>
+    <version>0.0.4</version>
     <name>xmies_randevu</name>
     <description>Demo project for Spring Boot</description>
 
